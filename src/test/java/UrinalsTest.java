@@ -59,10 +59,15 @@ public class UrinalsTest {
     }
 
     @Test
-    void readInputNegativeTest1() {
+    void EmptyFileTest() {
         System.out.println("====== Varshith Sriram Mandalapu == TEST EIGHT EXECUTED =======");
-        Assertions.assertThrows(EmptyFileException.class, () -> Urinals.readInput("FileNotFound.dat"));
+        Assertions.assertThrows(EmptyFileException.class, () -> Urinals.readInput("EmptyFile.dat"));
     }
 
+    @Test
+    void writeOutputTest() {
+        System.out.println("====== Varshith Sriram Mandalapu == TEST NINE EXECUTED =======");
+        Assertions.assertThrows(FileNotFoundException.class, () -> Urinals.writeOutput("NoFile.dat"));
+    }
 
 }

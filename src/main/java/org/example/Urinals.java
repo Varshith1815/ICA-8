@@ -121,7 +121,7 @@ public class Urinals {
             }
     }
 
-    public void writeOutput(String path) throws IOException, EmptyFileException {
+    public static void writeOutput(String path) throws IOException, EmptyFileException {
         readInput(path);
         String outPutFileName = "rule.txt";
         File files = new File(".");
