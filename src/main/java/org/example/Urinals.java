@@ -6,7 +6,7 @@ public class Urinals {
      * @author - Varshith Sriram Mandalapu
      */
 
-    private Integer count=0;
+    private static Integer count=0;
     public static boolean checkInput(String str)
     {
         for (int i=0;i<str.length();i++)
@@ -51,8 +51,45 @@ public class Urinals {
       }
         return true;
     }
-    public void countUrinals()
+    public static Integer countUrinals(String str)
     {
-
+        boolean checkString= checkInput(str);
+        boolean validateString= validateInput(str);
+        if(checkString==true && validateString==true)
+        {
+            for(int i=0;i<str.length();i++)
+            {
+                if (i==str.length()-1 )
+                {
+                    if(str.charAt(i-1)=='0' && str.charAt(i)=='0')
+                    {
+                        count++;
+                    }
+                }
+                else{
+                    if(str.charAt(i)=='0' && i==0)
+                    {
+                        if(str.charAt(i+1)=='0')
+                        {
+                            count++;
+                        }
+                    }
+                    else {
+                        if(str.charAt(i)=='0')
+                        {
+                            if(str.charAt(i-1)=='0' && str.charAt(i+1)=='0')
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(count==0)
+        {
+            return -1;
+        }
+        return count;
     }
 }
