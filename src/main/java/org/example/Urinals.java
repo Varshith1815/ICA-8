@@ -107,9 +107,13 @@ public class Urinals {
         return count;
     }
 
-    public static void readInput(String fileName) throws FileNotFoundException{
+    public static void readInput(String fileName) throws FileNotFoundException, EmptyFileException {
         File file = new File(fileName);
         Scanner scanner = new Scanner(file);
+        if(!scanner.hasNextLine())
+        {
+            throw new EmptyFileException("EmptyInput");
+        }
         while (scanner.hasNextLine()) {
               String s = scanner.nextLine();
               Integer result= countUrinals(s);
@@ -117,7 +121,7 @@ public class Urinals {
             }
     }
 
-    public void writeOutput(String path) throws IOException {
+    public void writeOutput(String path) throws IOException, EmptyFileException {
         readInput(path);
         String outPutFileName = "rule.txt";
         File files = new File(".");

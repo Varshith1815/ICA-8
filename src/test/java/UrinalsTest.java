@@ -1,3 +1,4 @@
+import org.example.EmptyFileException;
 import org.example.Urinals;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -56,5 +57,12 @@ public class UrinalsTest {
         System.out.println("====== Varshith Sriram Mandalapu == TEST SEVEN EXECUTED =======");
         Assertions.assertThrows(FileNotFoundException.class, () -> Urinals.readInput("FileNotFound.dat"));
     }
+
+    @Test
+    void readInputNegativeTest1() {
+        System.out.println("====== Varshith Sriram Mandalapu == TEST EIGHT EXECUTED =======");
+        Assertions.assertThrows(EmptyFileException.class, () -> Urinals.readInput("FileNotFound.dat"));
+    }
+
 
 }
