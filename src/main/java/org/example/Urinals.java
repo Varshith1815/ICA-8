@@ -1,6 +1,11 @@
 package org.example;
 
-import java.io.File;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Urinals {
     /**
@@ -8,6 +13,7 @@ public class Urinals {
      * @author - Varshith Sriram Mandalapu
      */
 
+    static ArrayList<Integer> output= new ArrayList<>();
     public static boolean checkInput(String str)
     {
         for (int i=0;i<str.length();i++)
@@ -96,22 +102,40 @@ public class Urinals {
             }
         }
         else {
-            return 0;
-        }
-        if(count==0)
-        {
             return -1;
         }
         return count;
     }
 
-    public void readInput(File input)
-    {
-
+    public static void readInput(String fileName) throws FileNotFoundException{
+        File file = new File(fileName);
+        Scanner scanner = new Scanner(file);
+        while (scanner.hasNextLine()) {
+              String s = scanner.nextLine();
+              Integer result= countUrinals(s);
+              output.add(result);
+            }
     }
 
-    public void writeOutput(Integer count)
-    {
-
-    }
+    public void writeOutput(String path) throws IOException {
+        readInput(path);
+        String outPutFileName = "rule.txt";
+        File files = new File(".");
+        List<String> outputFiles = Arrays.stream(files.listFiles()).map(file -> file.getName())
+                .filter(name -> name.matches("rule.*.txt")).sorted().collect(Collectors.toList());
+        if (!outputFiles.isEmpty()) {
+            String maxLength = outputFiles.get(outputFiles.size() - 1);
+            String numVal = maxLength.substring(4, maxLength.length() - 4);
+            if (numVal.length() > 0)
+                outPutFileName = String.format("rule%d.txt", Integer.parseInt(numVal) + 1);
+            else
+                outPutFileName = "rule1.txt";
+            }
+            FileWriter fw = new FileWriter(outPutFileName);
+            for (int i = 0; i < output.size(); i++) {
+                fw.write(output.get(i).toString());
+                fw.write(System.getProperty( "line.separator" ));
+            }
+            fw.close();
+        }
 }
