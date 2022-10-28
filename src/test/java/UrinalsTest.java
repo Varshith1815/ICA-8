@@ -33,14 +33,14 @@ public class UrinalsTest {
     void validateInputNegativeTest()
     {
         System.out.println("====== Varshith Sriram Mandalapu == TEST FOUR EXECUTED =======");
-        Assertions.assertFalse(Urinals.validateInput("11101"));
+        Assertions.assertFalse(Urinals.validateInput("111101"));
     }
 
     @Test
     void countUrinalsTest()
     {
         System.out.println("====== Varshith Sriram Mandalapu == TEST FIVE EXECUTED =======");
-        Assertions.assertEquals(2,Urinals.countUrinals("1000100100"));
+        Assertions.assertEquals(2,Urinals.countUrinals("0000"));
     }
 
     @Test
