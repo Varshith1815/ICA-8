@@ -14,4 +14,11 @@ public class UrinalsTest {
         System.out.println("====== Varshith Sriram Mandalapu == TEST ONE EXECUTED =======");
         Assertions.assertTrue(Urinals.checkInput("00100"));
     }
+
+    @Test
+    void validateInputTest()
+    {
+        System.out.println("====== Varshith Sriram Mandalapu == TEST TWO EXECUTED =======");
+        Assertions.assertTrue(Urinals.validateInput("10101"));
+    }
 }
